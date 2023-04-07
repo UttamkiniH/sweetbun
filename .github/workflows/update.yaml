@@ -32,7 +32,7 @@ jobs:
       run: expo login -u $EXPO_CLI_USERNAME -p $EXPO_CLI_PASSWORD
 
     - name: Build Expo App
-      run: expo build:android --type apk
+      run: eas build -p android
 
     - name: Install QR Code Generator
       run: yarn global add qrcode-cli
