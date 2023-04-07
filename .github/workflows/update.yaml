@@ -39,5 +39,5 @@ jobs:
 
     - name: Install QR Code Generator
       run: |
-        yarn global add qrcode-cli
+        yarn global add qrcode
         qrcode "exp://exp.host/@${{ secrets.EXPO_CLI_USERNAME }}/sweetbun" -o qr.png
