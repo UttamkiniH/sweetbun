@@ -40,4 +40,4 @@ jobs:
     - name: Install QR Code Generator
       run: |
         yarn global add qrcode
-        qrcode "exp://exp.host/@${{ secrets.EXPO_CLI_USERNAME }}/sweetbun" -o qr.png
+        node -e "const qr = require('qrcode'); qr.toFile('./qr.png', 'exp://exp.host/@${{ secrets.EXPO_CLI_USERNAME }}/sweetbun')"
