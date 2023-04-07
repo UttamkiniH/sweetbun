@@ -38,7 +38,6 @@ jobs:
       run:  eas build -p android
 
     - name: Install QR Code Generator
-      run: yarn global add qrcode-cli
-
-    - name: Generate QR Code
-      run: qrcode-cli "exp://exp.host/@${{ secrets.EXPO_CLI_USERNAME }}/sweetbun" -o qr.png
+      run: |
+        yarn global add qrcode-cli
+        qrcode "exp://exp.host/@${{ secrets.EXPO_CLI_USERNAME }}/sweetbun" -o qr.png
