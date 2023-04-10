@@ -27,6 +27,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
+      - name: Install EAS 
+        run: npx expo install expo-updates
+
       - name: Publish to Expo & create a QR code
         uses: expo/expo-preview-action@v1
         with:
