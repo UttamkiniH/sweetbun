@@ -19,6 +19,12 @@ jobs:
         with:
           node-version: 14
 
+      - name: Set up Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
       - name: Install dependencies
         run: yarn install
 
@@ -35,14 +41,4 @@ jobs:
         run: expo login -u $EXPO_CLI_USERNAME -p $EXPO_CLI_PASSWORD
 
       - name: Build Expo App
-        run: eas build -p android
-
-      - name: Install QR Code Generator
-        run: |
-          yarn add qrcode
-          node -e "const qrcode = require('qrcode'); qrcode.toFile('qr.png', 'exp://exp.host/@${{ secrets.EXPO_CLI_USERNAME }}/sweetbun', { type: 'png' })"
-
-      - name: Create preview
-        uses: expo/expo-github-action/preview@v8
-        with:
-          command: eas update --auto
+        run: eas build --profile preview --platform android
