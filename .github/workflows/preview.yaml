@@ -40,7 +40,7 @@ jobs:
       - name: Post QR Code
         uses: unsplash/comment-on-pr@master
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.MY_GIT_TOKEN }}
           msg: >
             You can preview the PR by scanning the QR code below: <br />
             <img src="${{ steps.get_qr_code_url.outputs.url }}" height="256" width="256">
