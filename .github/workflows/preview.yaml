@@ -30,8 +30,13 @@ jobs:
       - name: Install EAS 
         run: npx expo install expo-updates
 
-      - name: Publish to Expo & create a QR code
-        uses: expo/expo-preview-action@v1
-        with:
-          channel: pr-${{ github.event.number }}
-        id: preview
+      - name: Build apk 
+        run: eas build --profile preview --platform android
+
+#github - https://github.com/expo/expo-preview-action#create-a-qr-code-under-pull-request
+
+      # - name: Publish to Expo & create a QR code
+      #   uses: expo/expo-preview-action@v1
+      #   with:
+      #     channel: pr-${{ github.event.number }}
+      #   id: preview
