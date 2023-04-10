@@ -28,17 +28,8 @@ jobs:
       - name: Install dependencies
         run: yarn install
 
-      - name: Install Expo CLI
-        run: yarn global add expo-cli
-
-      - name: Install EAS
-        run: yarn global add eas-cli
-
-      - name: Login to Expo
-        env:
-          EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
-          EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
-        run: expo login -u $EXPO_CLI_USERNAME -p $EXPO_CLI_PASSWORD
-
-      - name: Build Expo App
-        run: eas build --profile preview --platform android
+      - name: Publish to Expo & create a QR code
+        uses: expo/expo-preview-action@v1
+        with:
+          channel: pr-${{ github.event.number }}
+        id: preview
