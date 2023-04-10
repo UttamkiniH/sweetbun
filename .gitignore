@@ -19,3 +19,4 @@ web-build/
 
 
 .github/workflows/.env
+.github/workflows/update.yaml
