@@ -3,11 +3,9 @@ on: pull_request:
 
 
 jobs:
-  update:
-    name: EAS Update
-    runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
+  expo_build:
+      runs-on: ubuntu-latest
+
     steps:
       - name: Check for EXPO_TOKEN
         run: |
@@ -53,7 +51,7 @@ jobs:
         uses: expo/expo-github-action/preview@v8
         with:
           command: eas update --auto
-          
+
       - name: Install QR Code Generator
         run: |
           yarn add qrcode

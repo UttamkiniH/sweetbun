@@ -1,43 +1,43 @@
-name: Expo Build on Pull Request
+# name: Expo Build on Pull Request
 
-on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
+# on:
+#   pull_request:
+#     types:
+#       - opened
+#       - synchronize
 
-jobs:
-  expo_build:
-    runs-on: ubuntu-latest
+# jobs:
+#   expo_build:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
+#       - name: Set up Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: 14
 
-      - name: Install dependencies
-        run: yarn install
+#       - name: Install dependencies
+#         run: yarn install
 
-      - name: Install Expo CLI
-        run: yarn global add expo-cli
+#       - name: Install Expo CLI
+#         run: yarn global add expo-cli
 
-      - name: Install EAS
-        run: yarn global add eas-cli
+#       - name: Install EAS
+#         run: yarn global add eas-cli
 
-      - name: Login to Expo
-        env:
-          EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
-          EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
-        run: expo login -u $EXPO_CLI_USERNAME -p $EXPO_CLI_PASSWORD
+#       - name: Login to Expo
+#         env:
+#           EXPO_CLI_PASSWORD: ${{ secrets.EXPO_CLI_PASSWORD }}
+#           EXPO_CLI_USERNAME: ${{ secrets.EXPO_CLI_USERNAME }}
+#         run: expo login -u $EXPO_CLI_USERNAME -p $EXPO_CLI_PASSWORD
 
-      - name: Build Expo App
-        run: eas build -p android
+#       - name: Build Expo App
+#         run: eas build -p android
 
-      - name: Install QR Code Generator
-        run: |
-          yarn add qrcode
-          node -e "const qrcode = require('qrcode'); qrcode.toFile('qr.png', 'exp://exp.host/@${{ secrets.EXPO_CLI_USERNAME }}/sweetbun', { type: 'png' })"
+#       - name: Install QR Code Generator
+#         run: |
+#           yarn add qrcode
+#           node -e "const qrcode = require('qrcode'); qrcode.toFile('qr.png', 'exp://exp.host/@${{ secrets.EXPO_CLI_USERNAME }}/sweetbun', { type: 'png' })"
