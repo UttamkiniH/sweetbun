@@ -1,4 +1,7 @@
 {
+  "cli":{
+    "appVersionSource": "local"
+  },
   "build": {
     "preview": {
       "android": {
@@ -18,7 +21,16 @@
       "channel": "preview3"
     },
     "production": {
-      "channel": "production"
+      "channel": "production",
+      "autoIncrement": true
     }
+  },
+  "submit":{
+    "production": {
+      "android": {
+        "serviceAccountKeyPath": "../path/to/api-xxx-yyy-zzz.json",
+        "track": "internal"
+      }
   }
+ } 
 }

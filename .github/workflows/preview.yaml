@@ -33,6 +33,11 @@ jobs:
         with:
           command: eas update --auto
 
+      - name: Building App with different version
+        command:
+
+      - name: Publish to Playstore
+
  
 
       # - name: Install dependencies
